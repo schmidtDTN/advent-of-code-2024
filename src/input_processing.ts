@@ -6,6 +6,7 @@ function readInFile(filename: string): string {
     return fs.readFileSync(path.resolve(__dirname, filename), 'utf8');;
 }
 
+// TODO: Split this into a char and a number function, to make the typing better
 export function extractRowLists(filename: string, isDigits: boolean): string[][] | number[][] {
     const inputFile = readInFile(filename);
 
@@ -27,13 +28,33 @@ export function extractRowLists(filename: string, isDigits: boolean): string[][]
 
 }
 
-// Two columnar lists - not the most elegant solution, and will be iterated on if the need arises for
+// Two column lists - not the most elegant solution, and will be iterated on if the need arises for
 // more than two columns, but if we _always_ can count on two columns, then this will work
-export function extractTwoColumnLists(filename: string, isDigits: boolean): string[][] | number[][] {
+export function extractTwoColumnListsAsChars(filename: string): string[][] {
     const columns = [];
     const firstColumn: any[] = [];
     const secondColumn: any[] = [];
-    const rows = extractRowLists(filename, isDigits);
+    const rows = extractRowLists(filename, false);
+
+    rows.forEach((row) => {
+        firstColumn.push(row[0])
+        secondColumn.push(row[1])
+    })
+
+    columns.push(firstColumn)
+    columns.push(secondColumn);
+
+    return columns;
+}
+
+
+// Two column lists - not the most elegant solution, and will be iterated on if the need arises for
+// more than two columns, but if we _always_ can count on two columns, then this will work
+export function extractTwoColumnListsAsNumbers(filename: string): number[][] {
+    const columns = [];
+    const firstColumn: any[] = [];
+    const secondColumn: any[] = [];
+    const rows = extractRowLists(filename, true);
 
     rows.forEach((row) => {
         firstColumn.push(row[0])

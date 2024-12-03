@@ -1,4 +1,4 @@
-import { extractRowLists, extractTwoColumnLists } from '../src/input_processing';
+import { extractRowLists, extractTwoColumnListsAsChars, extractTwoColumnListsAsNumbers } from '../src/input_processing';
 
 const testCharRows = [
     ['3', '4'],
@@ -43,11 +43,11 @@ describe('Row lists', () => {
 });
 describe('Columnar lists', () => {
     test('read in day 1 example file as two columnar lists of characters', () => {
-        const charCols = extractTwoColumnLists(inputTestFilePath, false)
+        const charCols = extractTwoColumnListsAsChars(inputTestFilePath)
         expect(charCols).toEqual(testCharCols)
     });
     test('read in day 1 example file as two columnar lists of numbers', () => {
-        const numberCols = extractTwoColumnLists(inputTestFilePath, true)
+        const numberCols = extractTwoColumnListsAsNumbers(inputTestFilePath)
         expect(numberCols).toEqual(testNumberCols)
     });
 });

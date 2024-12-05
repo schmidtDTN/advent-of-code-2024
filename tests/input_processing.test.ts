@@ -1,4 +1,4 @@
-import { extractRowLists, extractTwoColumnListsAsChars, extractTwoColumnListsAsNumbers } from '../src/input_processing';
+import { extractRowListsAsChars, extractRowListsAsNumbers, extractTwoColumnListsAsChars, extractTwoColumnListsAsNumbers } from '../src/input_processing';
 
 const testCharRows = [
     ['3', '4'],
@@ -33,11 +33,11 @@ const inputTestFilePath = '../inputs/input_test.txt'
 
 describe('Row lists', () => {
     test('read in day 1 example file as lists of rows of characters', () => {
-        const charRows = extractRowLists(inputTestFilePath, false);
+        const charRows = extractRowListsAsChars(inputTestFilePath);
         expect(charRows).toEqual(testCharRows)
     });
     test('read in day 1 example file as lists of rows of numbers', () => {
-        const numRows = extractRowLists(inputTestFilePath, true);
+        const numRows = extractRowListsAsNumbers(inputTestFilePath);
         expect(numRows).toEqual(testNumberRows)
     });
 });

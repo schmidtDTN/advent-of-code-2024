@@ -6,8 +6,7 @@ function readInFile(filename: string): string {
     return fs.readFileSync(path.resolve(__dirname, filename), 'utf8');;
 }
 
-// TODO: Split this into a char and a number function, to make the typing better
-export function extractRowLists(filename: string, isDigits: boolean): string[][] | number[][] {
+export function extractRowListsAsChars(filename: string): string[][] {
     const inputFile = readInFile(filename);
 
     const rawLines = inputFile.split('\n');
@@ -16,16 +15,17 @@ export function extractRowLists(filename: string, isDigits: boolean): string[][]
         return row;
     })
 
-    if (isDigits) {
-        const numberRows = charRows.map((charRow) => {
-            const numberRow = charRow.map((token) => +token)
-            return numberRow;
-        })
-        return numberRows;
-    }
-
     return charRows;
+}
 
+export function extractRowListsAsNumbers(filename: string): number[][] {
+    const charRows = extractRowListsAsChars(filename);
+
+    const numberRows = charRows.map((charRow) => {
+        const numberRow = charRow.map((token) => +token)
+        return numberRow;
+    })
+    return numberRows;
 }
 
 // Two column lists - not the most elegant solution, and will be iterated on if the need arises for
@@ -34,7 +34,7 @@ export function extractTwoColumnListsAsChars(filename: string): string[][] {
     const columns = [];
     const firstColumn: any[] = [];
     const secondColumn: any[] = [];
-    const rows = extractRowLists(filename, false);
+    const rows = extractRowListsAsChars(filename);
 
     rows.forEach((row) => {
         firstColumn.push(row[0])
@@ -54,7 +54,7 @@ export function extractTwoColumnListsAsNumbers(filename: string): number[][] {
     const columns = [];
     const firstColumn: any[] = [];
     const secondColumn: any[] = [];
-    const rows = extractRowLists(filename, true);
+    const rows = extractRowListsAsNumbers(filename);
 
     rows.forEach((row) => {
         firstColumn.push(row[0])

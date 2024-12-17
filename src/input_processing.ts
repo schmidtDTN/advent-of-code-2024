@@ -20,7 +20,19 @@ export function extractRowsAsSingleString(filename: string): string {
     return inputFile;
 }
 
-export function extractRowListsAsChars(filename: string): string[][] {
+export function extractUnspacedRowListsAsChars(filename: string): string[][] {
+    const inputFile = readInFile(filename);
+
+    const rawLines = inputFile.split('\n');
+    const charRows = rawLines.map((line) => {
+        const row = line.split('').filter((token) => token.length !== 0);
+        return row;
+    })
+
+    return charRows;
+}
+
+export function extractSpacedRowListsAsChars(filename: string): string[][] {
     const inputFile = readInFile(filename);
 
     const rawLines = inputFile.split('\n');
@@ -33,7 +45,7 @@ export function extractRowListsAsChars(filename: string): string[][] {
 }
 
 export function extractRowListsAsNumbers(filename: string): number[][] {
-    const charRows = extractRowListsAsChars(filename);
+    const charRows = extractSpacedRowListsAsChars(filename);
 
     const numberRows = charRows.map((charRow) => {
         const numberRow = charRow.map((token) => +token)
@@ -48,7 +60,7 @@ export function extractTwoColumnListsAsChars(filename: string): string[][] {
     const columns = [];
     const firstColumn: any[] = [];
     const secondColumn: any[] = [];
-    const rows = extractRowListsAsChars(filename);
+    const rows = extractSpacedRowListsAsChars(filename);
 
     rows.forEach((row) => {
         firstColumn.push(row[0])

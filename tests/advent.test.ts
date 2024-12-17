@@ -1,5 +1,6 @@
 import { dayOnePartOne, dayOnePartTwo } from "../src/day1";
 import { dayTwoPartOne, dayTwoPartTwo } from "../src/day2";
+import { dayThreePartOne, dayThreePartTwo } from "../src/day3";
 
 describe('Day 1', () => {
   describe('Part 1', () => {
@@ -53,6 +54,31 @@ describe('Day 2', () => {
       const safeReportCount = safetyReport.filter((isSafe) => isSafe === true).length
       // console.log('Day 2 Part 2: ', safeReportCount)
       expect(safeReportCount).toEqual(318);
+    });
+  });
+});
+
+describe('Day 3', () => {
+  describe('Part 1', () => {
+    test('Example data', () => {
+      const result = dayThreePartOne('../inputs/day3_ex.txt');
+      expect(result).toEqual(161);
+    });
+    test('Real data', () => {
+      const result = dayThreePartOne('../inputs/day3.txt');
+      // console.log('Day 3 Part 1: ', result)
+      expect(result).toEqual(173517243);
+    });
+  });
+  describe('Part 2', () => {
+    test('Example data', () => {
+      const result = dayThreePartTwo('../inputs/day3_part2_ex.txt');
+      expect(result).toEqual(48);
+    });
+    test('Real data', () => {
+      const result = dayThreePartTwo('../inputs/day3.txt');
+      // console.log('Day 3 Part 2: ', result)
+      expect(result).toEqual(100450138);
     });
   });
 });

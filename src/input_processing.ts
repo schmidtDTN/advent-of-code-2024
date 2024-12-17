@@ -6,6 +6,20 @@ function readInFile(filename: string): string {
     return fs.readFileSync(path.resolve(__dirname, filename), 'utf8');;
 }
 
+export function extractRowsAsStrings(filename: string): string[] {
+    const inputFile = readInFile(filename);
+
+    const rawLines = inputFile.split('\n');
+
+    return rawLines;
+}
+
+export function extractRowsAsSingleString(filename: string): string {
+    const inputFile = readInFile(filename).replace('\n', '');
+
+    return inputFile;
+}
+
 export function extractRowListsAsChars(filename: string): string[][] {
     const inputFile = readInFile(filename);
 

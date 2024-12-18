@@ -2,6 +2,7 @@ import { dayOnePartOne, dayOnePartTwo } from "../src/day1";
 import { dayTwoPartOne, dayTwoPartTwo } from "../src/day2";
 import { dayThreePartOne, dayThreePartTwo } from "../src/day3";
 import { dayFourPartOne, dayFourPartTwo } from "../src/day4";
+import { dayFivePartOne, dayFivePartTwo } from "../src/day5";
 
 describe('Day 1', () => {
   describe('Part 1', () => {
@@ -106,6 +107,32 @@ describe('Day 4', () => {
       const result = dayFourPartTwo('../inputs/day4.txt');
       // console.log('Day 4 Part 2: ', result)
       expect(result).toEqual(2000);
+    });
+  });
+});
+
+
+describe('Day 5', () => {
+  describe('Part 1', () => {
+    test('Example data', () => {
+      const result = dayFivePartOne('../inputs/day5_ex.txt');
+      expect(result).toEqual(143);
+    });
+    test('Real data', () => {
+      const result = dayFivePartOne('../inputs/day5.txt');
+      // console.log('Day 5 Part 1: ', result)
+      expect(result).toEqual(4959);
+    });
+  });
+  describe('Part 2', () => {
+    test('Example data', () => {
+      const result = dayFivePartTwo('../inputs/day5_ex.txt');
+      expect(result).toEqual(123);
+    });
+    test('Real data', () => {
+      const result = dayFivePartTwo('../inputs/day5.txt');
+      // console.log('Day 5 Part 2: ', result)
+      expect(result).toEqual(4655);
     });
   });
 });

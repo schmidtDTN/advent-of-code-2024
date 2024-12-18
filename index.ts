@@ -1,3 +1,4 @@
 import { dayFourPartTwo } from "./src/day4";
+import { dayFivePartOne, dayFivePartTwo } from "./src/day5";
 
-dayFourPartTwo('../../inputs/day4_ex.txt');
+dayFivePartTwo('../../inputs/day5_ex.txt');

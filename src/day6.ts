@@ -186,5 +186,3 @@ class TwoDimensionalArrayTraversal {
 
 
 }
-
-// function 2DArrayTraversal(array: string[][]){}

@@ -1,4 +1,4 @@
-import { extractRowsAsStrings, extractUnspacedRowListsAsChars } from "./input_processing";
+import { extractRowsAsStrings } from "./input_processing";
 
 type InputProcessing = {
     ruleNodes: RuleNode[]

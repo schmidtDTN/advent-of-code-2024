@@ -3,6 +3,7 @@ import { dayTwoPartOne, dayTwoPartTwo } from "../src/day2";
 import { dayThreePartOne, dayThreePartTwo } from "../src/day3";
 import { dayFourPartOne, dayFourPartTwo } from "../src/day4";
 import { dayFivePartOne, dayFivePartTwo } from "../src/day5";
+import { daySixPartOne, daySixPartTwo } from "../src/day6";
 
 describe('Day 1', () => {
   describe('Part 1', () => {
@@ -135,4 +136,30 @@ describe('Day 5', () => {
       expect(result).toEqual(4655);
     });
   });
+});
+
+
+describe('Day 6', () => {
+  describe('Part 1', () => {
+    test('Example data', () => {
+      const result = daySixPartOne('../inputs/day6_ex.txt');
+      expect(result).toEqual(41);
+    });
+    test('Real data', () => {
+      const result = daySixPartOne('../inputs/day6.txt');
+      // console.log('Day 6 Part 1: ', result)
+      expect(result).toEqual(4776);
+    });
+  });
+  // describe('Part 2', () => {
+  //   test('Example data', () => {
+  //     const result = daySixPartTwo('../inputs/day6_ex.txt');
+  //     expect(result).toEqual(6);
+  //   });
+  //   test('Real data', () => {
+  //     const result = daySixPartTwo('../inputs/day6.txt');
+  //     console.log('Day 5 Part 2: ', result)
+  //     // expect(result).toEqual(4655);
+  //   });
+  // });
 });
